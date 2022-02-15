@@ -1,0 +1,19 @@
+version: '3'
+services:
+  traefik:
+    container_name: traefik
+    image: traefik
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "8080:8080"
+      - "80:80"
+    volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+  whoami:
+    # A container that exposes an API to show its IP address
+    image: traefik/whoami
+    labels:
+      - "traefik.http.routers.whoami.rule=Host(`jawak.test`)"

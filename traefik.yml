@@ -1,0 +1,19 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+api:
+  dashboard: true
+  insecure: false
+
+providers:
+  ecs:
+    exposedByDefault: true
+    autoDiscoverClusters: true
+    clusters:
+      - YOUR_ECS_CLUSTER_NAME
+    region: YOUR_AWS_REGION
+    accessKeyID: "YOUR_AWS_ACCESS_KEY_ID"
+    secretAccessKey: "YOUR_AWS_SECRET_ACCESS_KEY"
